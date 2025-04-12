@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Baate - Web Chat</title>
+    <style>
+        @keyframes move {
+            0%,100%{
+                transform: rotateZ(0deg);
+
+            }
+            25%{
+                transform: rotateZ(5deg);
+
+            }
+            50%{
+                transform: rotateZ(0deg);
+
+            }
+            75%{
+                transform: rotateZ(-5deg);
+
+            }
+        }
+        @keyframes jump {
+            from{
+                transform: translateY(0px);
+            }
+            to{
+                transform: translateY(-10px);
+            }
+        }
+        @keyframes pop {
+            to{
+                transform: scale(.9);
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .navbar-container {
+            padding: 2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100vw;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .buttons button{
+            position: relative;
+            outline: none;
+            background-color: transparent;
+            border-radius: 10px;
+            border: solid;
+            padding: .5em .8em;
+        }
+        .buttons button:hover{
+            border: solid;
+            background-color: black;
+            transform: scale(1.05);
+            color: white;
+        }
+
+        .main-text {
+            width: 50vw;
+            margin: 10vh auto;
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+        }
+        .chickens{
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* gap: 20px; */
+            margin: 10vh 0;
+        }
+        .chickens img{
+            transform-origin: bottom;
+        }
+        .chickens img:nth-child(1){
+            animation: move .5s ease-in-out infinite;
+        }
+        .chickens img:nth-child(3){
+            animation: move .5s ease-in-out infinite;
+        }
+        .chickens img:nth-child(7){
+            animation: move .5s ease-in-out infinite;
+        }
+        .chickens img:nth-child(2){
+            animation: jump .5s ease-in-out infinite;
+        }
+        .chickens img:nth-child(5){
+            animation: jump .5s ease-in-out infinite;
+        }
+        .chickens img:nth-child(4){
+            animation: move .5s ease-in-out infinite;
+        }
+        .chickens img:nth-child(6){
+            animation: pop .5s ease-in-out infinite;
+        }
+        .chickens img:hover{
+            animation: none;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+            width: 100vw;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar-container">
+            <div class="logo-box">Baate</div>
+            <div class="buttons">
+                <form action="/signup">
+                    <button>Sign Up</button>
+                </form>
+                <form action="/signin">
+                    <button>Sign In</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <h1 class="main-text">Bhai Log Chalo Baate karte hai.</h1>
+        <div class="chickens">
+            <img src="/chicken1.png" alt="#">
+            <img src="/chicken2.png" alt="#">
+            <img src="/chicken3.png" alt="#">
+            <img src="/chicken4.png" alt="#">
+            <img src="/chicken5.png" alt="#">
+            <img src="/chicken6.png" alt="#">
+            <img src="/chicken7.png" alt="#">
+        </div>
+    </main>
+    <footer>
+        All rights reservied by me and myself - Bhai mene create kiya hai itna tho banta hai
+    </footer>
+</body>
+
+</html>
