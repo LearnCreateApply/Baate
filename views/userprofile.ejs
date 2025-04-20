@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Baate Chat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .msgcontainer {
+      height: 85vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 1em;
+    }
+
+    .msgbox {
+      position: fixed;
+      bottom: 0;
+      width: 100vw;
+      height: 15vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .msgbox input {
+      width: 25vw;
+      height: 40%;
+      border: solid;
+      border-radius: 15px;
+      padding: 0 1em;
+    }
+
+    .msgbox button {
+      height: 40%;
+      aspect-ratio: 1/1;
+    }
+
+    .message {
+      position: relative;
+      display: inline-block;
+      max-width: 90%;
+      word-wrap: break-word;
+      background-color: #f1f1f1;
+      padding: 0.5em 1em 1em 1em;
+      border-radius: 10px;
+      border: 2px solid black;
+      align-self: flex-start;
+
+    }
+
+    .message span {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 0 5px;
+      font-size: .8em;
+    }
+
+    .username {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="msgcontainer"></div>
+    <div class="msgbox">
+      <input type="text" placeholder="Type your message..." />
+    </div>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const username = "<%= username %>";
+    const screen = document.querySelector(".msgcontainer");
+    const input = document.querySelector(".msgbox input");
+    const socket = io();
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && input.value.trim() !== '') {
+        socket.emit('chat message', {
+          username: username,
+          message: input.value.trim()
+        });
+        input.value = '';
+      }
+    });
+
+    socket.on('chat message', function (data) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message';
+
+      const timeString = new Date().toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      messageDiv.innerHTML = `
+        <div class="username">${data.username}</div>
+        ${data.message}
+        <span>${timeString}</span>
+      `;
+
+      screen.appendChild(messageDiv);
+      messageDiv.scrollIntoView({ behavior: "smooth", block: "end" });
+    });
+  </script>
+</body>
+</html>
