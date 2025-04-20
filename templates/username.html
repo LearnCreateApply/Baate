@@ -5,23 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baate - Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            font-style: normal;
+
         }
 
         .container {
             display: flex;
-            width: 100vw;
-            height: 100vh;
+            margin: 8rem;
             justify-content: center;
             align-items: center;
         }
 
         form {
-            /* width: 25vw; */
+            width: 50vw;
             border: solid;
             /* min-height: 60vh; */
             display: flex;
@@ -37,38 +44,75 @@
         .input {
             display: flex;
             flex-direction: column;
-            width: 80%;
+            width: 60%;
+            position: relative;
         }
 
         .input input {
             /* display: block; */
             margin: 0.75em 0;
-            padding: 1em;
+            padding: 1em 1.2em;
             border-radius: 20px;
             outline: none;
             border: 1px solid;
         }
-        .input input:focus{
+
+        .input::after {
+            content: "Username";
+            position: absolute;
+            left: 0.5em;
+            top: -2px;
+            z-index: 1;
+            padding: 0 5px;
+            background-color: white;
+            /* display: none; */
+        }
+
+        .input input:focus {
             border: 1px solid rgb(0, 132, 255);
         }
-        button{
+
+        button {
             background-color: transparent;
-            margin: 1em 0 0 0;
+            border: 2px solid black;
+            border-radius: 7px;
+            box-shadow: 0 7px black;
             padding: 1em;
+            transition: all .3s ease-in-out;
+        }
+
+        button:hover {
+            transform: translateY(3px);
+            box-shadow: 0 4px black;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <form action="/baate" method="post">
+        <form id="signupForm" action="/baate" method="post">
             <h1>Enter Username</h1>
             <div class="input">
-                <input type="text" placeholder="Username" name="login">
+                <input type="text"name="login">
             </div>
-            <button type="submit">Submit</button>
+            <button id="submitBtn" type="button">Submit</button>
         </form>
+
     </div>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("signupForm");
+            const button = document.getElementById("submitBtn");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+            });
+
+            button.addEventListener("click", function () {
+                form.submit();
+            });
+        });
+    </script>
 </body>
 
 </html>
