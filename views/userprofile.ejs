@@ -11,7 +11,9 @@
       font-family: "Montserrat", sans-serif;
       box-sizing: border-box;
     }
-
+    /* body{
+      background-color: grey;
+    } */
     .msgcontainer {
       height: 85vh;
       overflow-y: auto;
@@ -19,30 +21,26 @@
       flex-direction: column;
       gap: 20px;
       padding: 1em;
+      border-radius: 15px;
+      background-color: white;
+      border: 2px solid black;
+      margin: 5px;
     }
 
     .msgbox {
-      position: fixed;
-      bottom: 0;
+      height: 13vh;
       width: 100vw;
-      height: 15vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px;
     }
 
     .msgbox input {
-      width: 25vw;
-      height: 40%;
+      width: 50vw;
+      height: 50%;
       border: solid;
       border-radius: 15px;
       padding: 0 1em;
-    }
-
-    .msgbox button {
-      height: 40%;
-      aspect-ratio: 1/1;
     }
 
     .message {
@@ -70,6 +68,7 @@
       font-weight: bold;
       margin-bottom: 4px;
     }
+
   </style>
 </head>
 <body>
@@ -109,6 +108,7 @@
       messageDiv.innerHTML = `
         <div class="username">${data.username}</div>
         ${data.message}
+         <br><br>
         <span>${timeString}</span>
       `;
 
