@@ -5,7 +5,7 @@ This is a simple real-time chat application built with Node.js, Express, and Soc
 ## 🚀 Live Demo
 
 Check out the live app here:  
-👉 [https://baate-7uw8.onrender.com](https://baate-7uw8.onrender.com)
+👉 [https://baate-aauz.onrender.com](https://baate-aauz.onrender.com)
 
 ## 📦 Features
 
